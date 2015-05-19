@@ -1,0 +1,34 @@
+<p>some words</p>
+<select>
+  <option value='value1'>value1</option>
+  <option value='value2'>value2</option>
+  <option value='value3'>value3</option>
+</select>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+
+
+
+{{#if isOpen}}
+
+  <button {{action 'closeList'}}>Close</button>
+  <input type='text' placeholder='search'>
+  <div>Open Menu</div>
+  <ul>
+    {{#each item in fauxData}}
+    <li>{{item.text}}</li>
+    {{/each}}
+  </ul>
+  
+
+{{else}}
+
+  <button {{action 'openList'}}>Open</button>
+
+{{/if}}
+
+{{yield}}
