@@ -1,0 +1,12 @@
+li {
+  border: 3px solid black;
+}
+
+ul.category-selector__list {
+  height: 200px;
+  width: 100px;
+}
+ul.category-selector__list {
+  overflow: hidden;
+  overflow-y: scroll;
+}

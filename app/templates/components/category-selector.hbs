@@ -1,5 +1,5 @@
 <p>some words</p>
-<select>
+{{!-- <select>
   <option value='value1'>value1</option>
   <option value='value2'>value2</option>
   <option value='value3'>value3</option>
@@ -9,26 +9,42 @@
   <option value="saab">Saab</option>
   <option value="mercedes">Mercedes</option>
   <option value="audi">Audi</option>
-</select>
+</select> --}}
 
-
-
+<button {{action 'changeData'}}>change</button>
+<button {{action 'filterData'}}>filter</button>
+<br><br>
 {{#if isOpen}}
-
+  <br><span>{{selected.text}}</span><br>
+  <button {{action 'closeList'}}>Close</button>
+  {{input type='text' placeholder='search' value=searchString}}
+  {{view "select"
+    content=filteredData
+    optionValuePath="content.id"
+    optionLabelPath="content.text"}}
+  <br><br>
+  <ul class='category-selector__list'>
+    {{#each item in filteredData}}
+    <li {{action 'itemClicked' item on='click'}}>{{item.text}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <button {{action 'openList'}}>Open</button>
+  <h1>MENU CLOSED!</h1>
+{{/if}}
+<br><br>
+{{!-- {{#if isOpen}}
   <button {{action 'closeList'}}>Close</button>
   <input type='text' placeholder='search'>
   <div>Open Menu</div>
-  <ul>
-    {{#each item in fauxData}}
-    <li>{{item.text}}</li>
-    {{/each}}
-  </ul>
-  
-
 {{else}}
-
   <button {{action 'openList'}}>Open</button>
+{{/if}} --}}
 
-{{/if}}
+{{!-- {{view "select"
+       content=filteredData
+       optionValuePath="content.id"
+       optionLabelPath="content.text"}}
+ --}}
 
 {{yield}}
