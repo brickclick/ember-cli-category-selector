@@ -1,50 +1,14 @@
-<p>some words</p>
-{{!-- <select>
-  <option value='value1'>value1</option>
-  <option value='value2'>value2</option>
-  <option value='value3'>value3</option>
-</select>
-<select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> --}}
-
-<button {{action 'changeData'}}>change</button>
-<button {{action 'filterData'}}>filter</button>
-<br><br>
 {{#if isOpen}}
-  <br><span>{{selected.text}}</span><br>
-  <button {{action 'closeList'}}>Close</button>
-  {{input type='text' placeholder='search' value=searchString}}
-  {{view "select"
-    content=filteredData
-    optionValuePath="content.id"
-    optionLabelPath="content.text"}}
-  <br><br>
+  {{input action="testAction" class='category-selector__input' type='text' placeholder='search' value=searchString}}
+  <button class='category-selector__new-button' {{action 'new'}}>+New</button>
   <ul class='category-selector__list'>
     {{#each item in filteredData}}
-    <li {{action 'itemClicked' item on='click'}}>{{item.text}}</li>
+    <li data-internalid={{item.id}} tabindex="0">{{item.text}}</li>
     {{/each}}
   </ul>
 {{else}}
-  <button {{action 'openList'}}>Open</button>
-  <h1>MENU CLOSED!</h1>
+  <span class='category-selector__selected'{{action 'openList' on='click'}}>{{selected.text}}</span>
+  <button class='category-selector__open-button' {{action 'openList'}}></button>
 {{/if}}
-<br><br>
-{{!-- {{#if isOpen}}
-  <button {{action 'closeList'}}>Close</button>
-  <input type='text' placeholder='search'>
-  <div>Open Menu</div>
-{{else}}
-  <button {{action 'openList'}}>Open</button>
-{{/if}} --}}
-
-{{!-- {{view "select"
-       content=filteredData
-       optionValuePath="content.id"
-       optionLabelPath="content.text"}}
- --}}
 
 {{yield}}

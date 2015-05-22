@@ -3,4 +3,5 @@
 
 module.exports = {
   name: 'ember-cli-category-selector'
+
 };
