@@ -119,7 +119,7 @@ export default Ember.Component.extend({
         let self = this;
         let internalid = e.target.dataset.internalid;
         if (internalid) {
-          let item = this.get('data').findBy('id', parseInt(internalid, 10));
+          let item = this.get('data').findBy('id', internalid);
           this.set('selected', item);
           this.set('searchString', item.text);
           this.send('closeList');
