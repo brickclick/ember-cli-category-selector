@@ -1,14 +1,14 @@
 {{#if isOpen}}
-  {{input action="testAction" class='category-selector__input' type='text' placeholder='search' value=searchString}}
+  {{input action="inputSelect" class='category-selector__input' type='text' placeholder='search' value=searchString}}
   <button class='category-selector__new-button' {{action 'new'}}>+New</button>
-  <ul class='category-selector__list'>
+  <ul class="category-selector__list">
     {{#each item in filteredData}}
-    <li data-internalid={{item.id}} tabindex="0">{{item.text}}</li>
+    <li class="category-selector__item" data-internalid={{item.id}} tabindex="0">{{item.text}}</li>
     {{/each}}
   </ul>
 {{else}}
-  <span class='category-selector__selected'{{action 'openList' on='click'}}>{{selected.text}}</span>
-  <button class='category-selector__open-button' {{action 'openList'}}></button>
+  <span class="category-selector__selected"{{action 'openList' on='click'}}>{{selected.text}}</span>
+  <button class="category-selector__open-button" {{action 'openList'}}></button>
 {{/if}}
 
 {{yield}}
