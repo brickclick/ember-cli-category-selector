@@ -71,7 +71,7 @@ export default Ember.Component.extend({
     inputSelect: function(e) { // select item if there is only one left in the list
       if (this.$('.category-selector__list li').size() === 1) {
         let internalid = this.$('.category-selector__list li:first').data('internalid');
-        let item = this.get('data').findBy('id', parseInt(internalid, 10));
+        let item = this.get('data').findBy('id', internalid);
         this.set('selected', item);
         this.set('searchString', item.text);
         this.send('closeList');
